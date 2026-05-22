@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const API = 'https://ai-mcplayer-br.onrender.com'
+
 export default function App() {
   const [code, setCode] = useState('')
   const [username, setUsername] = useState('')
@@ -9,7 +11,7 @@ export default function App() {
     setStatus('Contacting backend...')
 
     try {
-      const response = await fetch('http://localhost:3000/redeem', {
+      const response = await fetch(`${API}/redeem`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,6 +34,9 @@ export default function App() {
     <div className='container'>
       <div className='card'>
         <h1>AI Minecraft Companion</h1>
+
+        <p>Backend Connected:</p>
+        <p>{API}</p>
 
         <input
           placeholder='Minecraft Username'
